@@ -1,8 +1,6 @@
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
-import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -18,7 +16,8 @@ public class Main {
         Scanner scannerIn = new Scanner(System.in);
 
         System.out.println("Which movie would you like to see?");
-        String latestMovie = scannerIn.nextLine().toLowerCase();
+        String movie = scannerIn.nextLine().toLowerCase();
+        String latestMovie = scannerIn.nextLine().toLowerCase().replaceAll("\\s","");
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://imdb-internet-movie-database-unofficial.p.rapidapi.com/film/" + latestMovie))
@@ -36,10 +35,10 @@ public class Main {
         String latestMovieYear = latestMovieJson.get("year").toString();
         String latestMovieRating = latestMovieJson.get("rating").toString();
 
-        System.out.println("\n" + latestMovie + "came out in: " + latestMovieYear);
+        System.out.println("\n" + movie + " came out in: " + latestMovieYear);
         System.out.println("And is rated: " + latestMovieRating + "!\n");
 
-        System.out.println("What else do you need to know?" + "\n");
+        System.out.println("What else do you need to know about" + movie + "? \n");
 
         //+ "\n"
         String exitOption = "Exit menu";
@@ -78,7 +77,7 @@ public class Main {
                         System.out.println(getRightResponse(selectedOption, latestMovieJson));
                         optionList.remove(1);
 
-                        System.out.println("What else do you need to know about " + latestMovie + "?" + "\n");
+                        System.out.println("What else do you need to know about " + movie + "?" + "\n");
 
                         index = 0;
                         for (String s : optionList) {
@@ -103,7 +102,7 @@ public class Main {
                         System.out.println(getRightResponse(selectedOption, latestMovieJson));
                         optionList.remove(2);
 
-                        System.out.println("What else do you need to know about " + latestMovie + "?" + "\n");
+                        System.out.println("What else do you need to know about " + movie + "?" + "\n");
 
                         index = 0;
                         for (String s : optionList) {
@@ -129,7 +128,7 @@ public class Main {
                         System.out.println(getRightResponse(selectedOption, latestMovieJson));
                         optionList.remove(3);
 
-                        System.out.println("What else do you need to know about " + latestMovie + "?" + "\n");
+                        System.out.println("What else do you need to know about " + movie + "?" + "\n");
 
                         index = 0;
                         for (String s : optionList) {
@@ -154,7 +153,7 @@ public class Main {
                         System.out.println(getRightResponse(selectedOption, latestMovieJson));
                         optionList.remove(4);
 
-                        System.out.println("What else do you need to know about " + latestMovie + "?" + "\n");
+                        System.out.println("What else do you need to know about " + movie + "?" + "\n");
 
                         index = 0;
                         for (String s : optionList) {
@@ -179,7 +178,7 @@ public class Main {
                         System.out.println(getRightResponse(selectedOption, latestMovieJson));
                         optionList.remove(5);
 
-                        System.out.println("What else do you need to know about " + latestMovie + "?" + "\n");
+                        System.out.println("What else do you need to know about " + movie + "?" + "\n");
 
                         index = 0;
                         for (String s : optionList) {
@@ -208,7 +207,7 @@ public class Main {
             }
         }
 
-        System.out.println("Enjoy " + latestMovie);
+        System.out.println("Enjoy " + movie);
 
     }
 
