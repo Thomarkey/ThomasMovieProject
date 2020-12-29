@@ -17,7 +17,7 @@ public class Main {
 
         System.out.println("Which movie would you like to see?");
         String movie = scannerIn.nextLine().toLowerCase();
-        String latestMovie = scannerIn.nextLine().toLowerCase().replaceAll("\\s","");
+        String latestMovie = movie.replaceAll("\\s", "");
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://imdb-internet-movie-database-unofficial.p.rapidapi.com/film/" + latestMovie))
@@ -38,7 +38,7 @@ public class Main {
         System.out.println("\n" + movie + " came out in: " + latestMovieYear);
         System.out.println("And is rated: " + latestMovieRating + "!\n");
 
-        System.out.println("What else do you need to know about" + movie + "? \n");
+        System.out.println("What else do you need to know about " + movie + "? \n");
 
         //+ "\n"
         String exitOption = "Exit menu";
