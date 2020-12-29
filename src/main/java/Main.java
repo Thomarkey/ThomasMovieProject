@@ -13,11 +13,11 @@ import java.util.Scanner;
 public class Main {
 
 
-    public static void main(String[] args) throws IOException, InterruptedException, ParseException, NoSuchFieldException {
+    public static void main(String[] args) throws Exception {
         JSONParser jsonParser = new JSONParser();
         Scanner scannerIn = new Scanner(System.in);
 
-        System.out.println("What movie did u watch?");
+        System.out.println("Which movie would you like to see?");
         String latestMovie = scannerIn.nextLine().toLowerCase();
 
         HttpRequest request = HttpRequest.newBuilder()
@@ -36,12 +36,13 @@ public class Main {
         String latestMovieYear = latestMovieJson.get("year").toString();
         String latestMovieRating = latestMovieJson.get("rating").toString();
 
-        System.out.println("This movie came out in: " + latestMovieYear);
-        System.out.println("And is rated: " + latestMovieRating + "\n");
+        System.out.println("\n" + latestMovie + "came out in: " + latestMovieYear);
+        System.out.println("And is rated: " + latestMovieRating + "!\n");
 
         System.out.println("What else do you need to know?" + "\n");
 
         //+ "\n"
+        String exitOption = "Exit menu";
         String plotOption = "What is it about?";
         String lengthOption = "How long is the movie?";
         String castOption = "Who are the main characters?";
@@ -49,39 +50,182 @@ public class Main {
         String posterOption = "Show me the movie poster!";
 
         ArrayList<String> optionList = new ArrayList<String>();
+        optionList.add(exitOption);
         optionList.add(plotOption);
         optionList.add(lengthOption);
         optionList.add(castOption);
         optionList.add(trailerOption);
         optionList.add(posterOption);
 
-        int index = 1;
-        for (String s : optionList) {
-            System.out.println(index++ + ": " + s);
+        int index = 0;
+        for (String option : optionList) {
+            System.out.println(index++ + ": " + option);
         }
 
         int option = scannerIn.nextInt();
+        String selectedOption = "";
 
-        switch (option) {
-            case 1:
-                System.out.println(optionList.get(0));
-                optionList.remove(0);
-                break;
-            case 2:
-                System.out.println(optionList.get(1));
-                break;
-            case 3:
-                System.out.println(optionList.get(2));
-                break;
-            case 4:
-                System.out.println(optionList.get(3));
-                break;
-            case 5:
-                System.out.println(optionList.get(4));
-                break;
+        while (optionList.size() > 0 && option != 0) {
+            switch (option) {
+//                case 0:
+//                    option = 0;
+//                    System.out.println("Enjoy the movie!");
+//                    break;
+
+                case 1:
+                    try {
+                        selectedOption = optionList.get(1);
+                        System.out.println(getRightResponse(selectedOption, latestMovieJson));
+                        optionList.remove(1);
+
+                        System.out.println("What else do you need to know about " + latestMovie + "?" + "\n");
+
+                        index = 0;
+                        for (String s : optionList) {
+                            System.out.println(index++ + ": " + s);
+                        }
+
+                        option = scannerIn.nextInt();
+//                        selectedOption = "";
+                    } catch (Exception e) {
+                        System.out.println("Wrong choice, try again:" + "\n");
+                        index = 0;
+                        for (String s : optionList) {
+                            System.out.println(index++ + ": " + s);
+                        }
+                        option = scannerIn.nextInt();
+                    }
+
+                    break;
+                case 2:
+                    try {
+                        selectedOption = optionList.get(2);
+                        System.out.println(getRightResponse(selectedOption, latestMovieJson));
+                        optionList.remove(2);
+
+                        System.out.println("What else do you need to know about " + latestMovie + "?" + "\n");
+
+                        index = 0;
+                        for (String s : optionList) {
+                            System.out.println(index++ + ": " + s);
+                        }
+
+                        option = scannerIn.nextInt();
+//                        selectedOption = "";
+                    } catch (Exception e) {
+                        System.out.println("Wrong choice, try again:" + "\n");
+                        index = 0;
+                        for (String s : optionList) {
+                            System.out.println(index++ + ": " + s);
+                        }
+                        option = scannerIn.nextInt();
+                    }
+
+
+                    break;
+                case 3:
+                    try {
+                        selectedOption = optionList.get(3);
+                        System.out.println(getRightResponse(selectedOption, latestMovieJson));
+                        optionList.remove(3);
+
+                        System.out.println("What else do you need to know about " + latestMovie + "?" + "\n");
+
+                        index = 0;
+                        for (String s : optionList) {
+                            System.out.println(index++ + ": " + s);
+                        }
+
+                        option = scannerIn.nextInt();
+//                        selectedOption = "";
+                    } catch (Exception e) {
+                        System.out.println("Wrong choice, try again:" + "\n");
+                        index = 0;
+                        for (String s : optionList) {
+                            System.out.println(index++ + ": " + s);
+                        }
+                        option = scannerIn.nextInt();
+                    }
+
+                    break;
+                case 4:
+                    try {
+                        selectedOption = optionList.get(4);
+                        System.out.println(getRightResponse(selectedOption, latestMovieJson));
+                        optionList.remove(4);
+
+                        System.out.println("What else do you need to know about " + latestMovie + "?" + "\n");
+
+                        index = 0;
+                        for (String s : optionList) {
+                            System.out.println(index++ + ": " + s);
+                        }
+
+                        option = scannerIn.nextInt();
+//                        selectedOption = "";
+                    } catch (Exception e) {
+                        System.out.println("Wrong choice, try again:" + "\n");
+                        index = 0;
+                        for (String s : optionList) {
+                            System.out.println(index++ + ": " + s);
+                        }
+                        option = scannerIn.nextInt();
+                    }
+
+                    break;
+                case 5:
+                    try {
+                        selectedOption = optionList.get(5);
+                        System.out.println(getRightResponse(selectedOption, latestMovieJson));
+                        optionList.remove(5);
+
+                        System.out.println("What else do you need to know about " + latestMovie + "?" + "\n");
+
+                        index = 0;
+                        for (String s : optionList) {
+                            System.out.println(index++ + ": " + s);
+                        }
+
+                        option = scannerIn.nextInt();
+//                        selectedOption = "";
+                    } catch (Exception e) {
+                        System.out.println("Wrong choice, try again:" + "\n");
+                        index = 0;
+                        for (String s : optionList) {
+                            System.out.println(index++ + ": " + s);
+                        }
+                        option = scannerIn.nextInt();
+                    }
+
+                    break;
+                default:
+                    System.out.println("Wrong choice, try again:" + "\n");
+                    index = 0;
+                    for (String s : optionList) {
+                        System.out.println(index++ + ": " + s);
+                    }
+                    option = scannerIn.nextInt();
+            }
         }
 
+        System.out.println("Enjoy " + latestMovie);
 
     }
+
+    private static String getRightResponse(String selectedOption, JSONObject latestMovieJson) {
+        if (selectedOption.contains("about")) {
+            return latestMovieJson.get("plot").toString() + "\n";
+        } else if (selectedOption.contains("long")) {
+            return latestMovieJson.get("length").toString() + "\n";
+        } else if (selectedOption.contains("characters")) {
+            return latestMovieJson.get("cast").toString() + "\n";
+        } else if (selectedOption.contains("trailer")) {
+            return latestMovieJson.get("trailer").toString() + "\n";
+        } else if (selectedOption.contains("poster")) {
+            return latestMovieJson.get("poster").toString() + "\n";
+        }
+        return null;
+    }
+
 
 }
